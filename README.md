@@ -165,11 +165,34 @@ To run the application, we just need to run the following command in the root di
 ```bash
 docker-compose up --build
 ```
+Use build again only when there are changes in the images, that is, in the Dockerfiles or in the dependencies (like `requirements.txt`). If there are only changes in the code, we can just run:
+
+```bash
+docker-compose up
+```
 
 To turn it down, we can run:
 
 ```bash
 docker-compose down
+```
+
+To remove the volumes (like the database data), we can run:
+
+```bash
+docker-compose down -v
+```
+To clean up all the dangling images you've accumulated, run:
+
+```bash
+docker image prune
+```
+
+That removes all the untagged leftover images from previous builds without touching anything currently in use. If you want to see what you have before pruning:
+
+```bash
+docker images -a
+```
 ```
 
 
